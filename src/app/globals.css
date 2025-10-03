@@ -1,0 +1,80 @@
+/* globals.css — full replace */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme/backdrop */
+:root { color-scheme: dark; }
+html, body { background: #0B0F1A; }
+body {
+  background: radial-gradient(140% 120% at 70% 40%, #17121f 0%, #0a0a0d 60%);
+}
+
+/* Keep accidental horizontal bars away */
+html, body { overflow-x: hidden; }
+
+/* Optional: fullpage snap elsewhere (not the showcase) */
+.fullpage { scroll-snap-type: y mandatory; }
+.fullpage section[data-snap] {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* ================================
+   Showcase (horizontal scroller)
+   ================================ */
+#showcase * { box-sizing: border-box; }
+
+/* IMPORTANT: let sticky anchor to the page.
+   No custom overflow/contain that would create a new scroll container. */
+#showcase {
+  /* previously: overflow-x: clip; contain: layout paint;  <-- breaks sticky */
+  overflow: visible;
+  contain: initial;
+  scroll-snap-align: none !important; /* ignore fullpage snap here */
+  transform: none; /* guard in case an ancestor applies transforms */
+}
+
+/* Subtle edge fades look cleaner when images fill */
+#showcase img { display: block; object-fit: cover; }
+/* ROG-style neon frame */
+.neon-frame {
+  position: relative;
+  border-radius: var(--r, 24px);
+  isolation: isolate; /* keep glow inside stacking context */
+}
+
+/* outer glow */
+.neon-frame::before {
+  content: "";
+  position: absolute;
+  inset: -6px;                    /* slightly outside for halo */
+  border-radius: inherit;
+  background: radial-gradient(120% 120% at 50% 50%, color-mix(in oklab, var(--neon) 85%, transparent), transparent 60%);
+  filter: blur(14px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* crisp neon stroke */
+.neon-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid color-mix(in oklab, var(--neon) 88%, white 0%);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--neon) 35%, black 65%) inset,
+    0 0 12px color-mix(in oklab, var(--neon) 55%, transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* content above the strokes */
+.neon-content {
+  position: relative;
+  z-index: 2;
+  border-radius: var(--r, 24px);
+  overflow: clip;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+}
