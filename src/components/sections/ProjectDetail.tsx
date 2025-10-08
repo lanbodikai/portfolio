@@ -11,7 +11,7 @@ export default function ProjectDetail({
   ctaLabel,
   ctaTarget,
   layout = "default",
-  ...props
+  ..._props
 }: React.HTMLAttributes<HTMLElement> & {
   title: string;
   img: string;
@@ -28,7 +28,6 @@ export default function ProjectDetail({
   return (
     <motion.section
       ref={sectionRef}
-      {...props}
       className="relative section-narrow section-pad text-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: inView ? 1 : 0 }}

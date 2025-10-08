@@ -2,7 +2,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 
-export default function ContactCTA(props: React.HTMLAttributes<HTMLElement>) {
+export default function ContactCTA(_: React.HTMLAttributes<HTMLElement>) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const inView = useInView(sectionRef, { once: false, margin: "-20% 0px" });
   const [copied, setCopied] = useState(false);
@@ -25,7 +25,6 @@ export default function ContactCTA(props: React.HTMLAttributes<HTMLElement>) {
   return (
     <motion.section
       ref={sectionRef}
-      {...props}
       id="contact"
       data-snap
       className="relative section-narrow py-16 md:py-20"
