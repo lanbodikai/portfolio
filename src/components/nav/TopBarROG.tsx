@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
+  { label: "Projects", href: "/projects" },
   { label: "About Me", href: "#awards" },
   { label: "Contact", href: "#contact" },
 ];
@@ -21,12 +22,12 @@ export default function TopBarROG() {
     >
       <div className="mx-auto flex h-full max-w-[1440px] items-center justify-between px-5 md:px-8">
         <div className="select-none text-[22px] font-extrabold tracking-wide text-white">
-          Junkai (Kai) Zhao
+          Kai Zhao
         </div>
 
         <nav className="hidden items-stretch gap-6 md:flex">
-          {links.map((l, i) => {
-            const isActive = i === 0; // “Features” looks active on the ASUS page
+          {links.map((l) => {
+            const isActive = (l.href.startsWith('/') && pathname === l.href);
             return (
               <Link
                 key={l.label}
