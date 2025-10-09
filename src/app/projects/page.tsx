@@ -1,7 +1,7 @@
 // src/app/projects/page.tsx
 
 import TopBarROG from "@/components/nav/TopBarROG";
-import AuthorReel from "@/components/sections/AuthorReel";
+import ProjectsTimeline from "@/components/sections/ProjectsTimeline";
 
 export default function ProjectsPage() {
   return (
@@ -10,9 +10,8 @@ export default function ProjectsPage() {
       {/* Spacer to sit below fixed navbar */}
       <div className="h-16" />
 
-      {/* Reuse the Projects reel for a focused projects page */}
-      <AuthorReel />
+      {/* Interactive flowing timeline of projects */}
+      <ProjectsTimeline />
     </main>
   );
 }
-
