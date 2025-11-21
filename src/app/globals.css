@@ -21,6 +21,41 @@ body {
   overflow-x: hidden;
 }
 
+/* Layout helpers */
+.section-narrow {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 768px) {
+  .section-narrow {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* Horizontal gallery marquee */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee var(--speed, 30s) linear infinite;
+}
+.marquee-track.reverse {
+  animation-direction: reverse;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 /* Cyberpunk Grid - Subtle background texture */
 .bg-grid-pattern {
   background-image: 
