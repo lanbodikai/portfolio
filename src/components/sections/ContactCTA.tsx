@@ -7,12 +7,12 @@ export default function ContactCTA(_: React.HTMLAttributes<HTMLElement>) {
   const inView = useInView(sectionRef, { once: false, margin: "-20% 0px" });
   const [copied, setCopied] = useState(false);
 
-  // Replace these with your actual contact handles
-  const linkedinUrl = "https://www.linkedin.com/in/your-handle";
-  const githubUrl = "https://github.com/your-handle";
-  const email = "kai@example.com";
-  const phone = "+1-555-123-4567";
-  const wechatId = "your-wechat-id";
+  // Update these with your real info
+  const linkedinUrl = "https://www.linkedin.com/in/kai-zhao-85b9832a1/";
+  const githubUrl = "https://github.com/lanbodikai";
+  const email = "lanbodikai@gmail.com";
+  const phone = "+1-641-819-2530";
+  const wechatId = "lanbodikai"; // Add your real ID here
 
   const copyWeChat = async () => {
     try {
@@ -26,61 +26,87 @@ export default function ContactCTA(_: React.HTMLAttributes<HTMLElement>) {
     <motion.section
       ref={sectionRef}
       id="contact"
-      data-snap
-      className="relative section-narrow py-16 md:py-20"
+      className="relative py-24 md:py-32"
       initial={{ opacity: 0 }}
       animate={{ opacity: inView ? 1 : 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mx-auto w-full max-w-[860px] rounded-3xl border border-white/10 bg-white/5 p-8 text-center"
+        className="mx-auto w-full max-w-4xl rounded-3xl border border-white/10 bg-[#0a0a0c] p-10 text-center md:p-16"
       >
-        <h3 className="text-3xl font-semibold md:text-5xl">Get in touch</h3>
-        <p className="mx-auto mt-3 max-w-2xl text-white/80">Got a product brewing? Hit me up.</p>
+        <h3 className="font-tech text-4xl font-bold uppercase tracking-tight text-white md:text-6xl">
+          Get in <span className="text-rogCyan">Touch</span>
+        </h3>
+        <p className="mx-auto mt-4 max-w-xl text-lg text-gray-400">
+          Got a product brewing? Let's build something intelligent together.
+        </p>
 
-        <div className="mt-8 mx-auto flex max-w-[520px] flex-wrap items-center justify-center gap-[2px]">
-          <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="neon-bubble">
-            <span className="inner">
-              <span className="icon">in</span>
-              <span className="label">LinkedIn</span>
+        {/* Responsive Grid for Contact Buttons */}
+        <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-5">
+          
+          {/* LinkedIn */}
+          <a
+            href={linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 py-6 transition-all hover:border-rogRed hover:bg-rogRed/10"
+          >
+            <i className="fa-brands fa-linkedin-in mb-3 text-2xl text-gray-400 transition-colors group-hover:text-rogRed"></i>
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-gray-300 group-hover:text-white">
+              LinkedIn
             </span>
           </a>
 
-          <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="neon-bubble">
-            <span className="inner">
-              <span className="icon">GH</span>
-              <span className="label">GitHub</span>
+          {/* GitHub */}
+          <a
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 py-6 transition-all hover:border-rogCyan hover:bg-rogCyan/10"
+          >
+            <i className="fa-brands fa-github mb-3 text-2xl text-gray-400 transition-colors group-hover:text-rogCyan"></i>
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-gray-300 group-hover:text-white">
+              GitHub
             </span>
           </a>
 
-          <a href={`mailto:${email}`} className="neon-bubble">
-            <span className="inner">
-              <span className="icon">@</span>
-              <span className="label">Email</span>
+          {/* Email */}
+          <a
+            href={`mailto:${email}`}
+            className="group flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 py-6 transition-all hover:border-rogRed hover:bg-rogRed/10"
+          >
+            <i className="fa-solid fa-envelope mb-3 text-2xl text-gray-400 transition-colors group-hover:text-rogRed"></i>
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-gray-300 group-hover:text-white">
+              Email
             </span>
           </a>
 
-          <a href={`tel:${phone.replace(/[^+\d]/g, "")}`} className="neon-bubble">
-            <span className="inner">
-              <span className="icon" aria-hidden>
-                <svg viewBox="0 0 24 24" width="14" height="14" className="text-white" fill="currentColor">
-                  <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.05-.24c1.12.37 2.33.56 3.54.56a1 1 0 011 1V20a1 1 0 01-1 1C10.4 21 3 13.6 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.21.19 2.42.56 3.54a1 1 0 01-.24 1.05l-2.2 2.2z"/>
-                </svg>
-              </span>
-              <span className="label">Phone</span>
+          {/* Phone */}
+          <a
+            href={`tel:${phone.replace(/[^+\d]/g, "")}`}
+            className="group flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 py-6 transition-all hover:border-rogCyan hover:bg-rogCyan/10"
+          >
+            <i className="fa-solid fa-phone mb-3 text-2xl text-gray-400 transition-colors group-hover:text-rogCyan"></i>
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-gray-300 group-hover:text-white">
+              Phone
             </span>
           </a>
 
-          <button onClick={copyWeChat} className="neon-bubble" title={wechatId}>
-            <span className="inner">
-              <span className="icon">微</span>
-              <span className="label">{copied ? "Copied!" : "WeChat"}</span>
+          {/* WeChat (Spans 2 cols on mobile to center) */}
+          <button
+            onClick={copyWeChat}
+            className="group col-span-2 flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 py-6 transition-all hover:border-rogRed hover:bg-rogRed/10 md:col-span-1"
+          >
+            <i className="fa-brands fa-weixin mb-3 text-2xl text-gray-400 transition-colors group-hover:text-rogRed"></i>
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-gray-300 group-hover:text-white">
+              {copied ? "Copied!" : "WeChat"}
             </span>
           </button>
+
         </div>
       </motion.div>
     </motion.section>

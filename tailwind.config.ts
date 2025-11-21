@@ -9,13 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        rogRed: '#ff0033',
-        rogCyan: '#00f0ff',
-        rogDark: '#060606',
-        rogGray: '#1a1a1a',
+        // UPDATED: Cyber-Violet & Cyan Theme
+        rogRed: '#8b5cf6',   // Now Neon Purple (Violet-500)
+        rogCyan: '#06b6d4',  // Now Neon Cyan (Cyan-500)
+        rogDark: '#050507',  // Slightly purple-tinted black
+        rogGray: '#1a1a1c',
       },
       fontFamily: {
-        tech: ['var(--font-orbitron)', 'sans-serif'], // We will load this in layout
+        tech: ['var(--font-orbitron)', 'sans-serif'],
         body: ['var(--font-roboto)', 'sans-serif'],
       },
       backgroundImage: {

@@ -11,7 +11,7 @@ export default function IntroOverlay() {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(() => setIsLoading(false), 1000); 
+          setTimeout(() => setIsLoading(false), 500); 
           return 100;
         }
         return prev + Math.floor(Math.random() * 15) + 5;
@@ -45,7 +45,7 @@ export default function IntroOverlay() {
             </div>
             
             <div className="mt-2 flex justify-between font-mono text-xs text-rogRed">
-              <span>SYSTEM BOOT</span>
+              <span>Starting...</span>
               <span>{Math.min(progress, 100)}%</span>
             </div>
           </div>

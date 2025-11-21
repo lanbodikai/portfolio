@@ -53,8 +53,8 @@ export default function HeroG16() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="mt-8 max-w-xl text-lg font-medium text-gray-300 md:text-xl"
         >
-          Full Stack Engineer & Product Designer.<br />
-          <span className="text-cyan-400">Building the future of interfaces.</span>
+          Full Stack Engineer & AI Product Designer.<br />
+          <span className="text-cyan-400">Building the future of AI products.</span>
         </motion.p>
 
         {/* Scroll Indicator */}
