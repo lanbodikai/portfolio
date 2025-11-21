@@ -1,63 +1,84 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 export default function HeroVideo() {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const isInView = useInView(sectionRef, { once: false, margin: "-20% 0px" });
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax: Video opacity fades, Text moves down slowly
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   return (
-    <motion.section
-      ref={sectionRef}
+    <section
+      ref={containerRef}
       id="hero"
-      className="relative h-[100svh] w-full overflow-hidden bg-black rog-neon-bg"
-      aria-label="Hero"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: isInView ? 1 : 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="relative h-[100svh] w-full overflow-hidden bg-black"
     >
-      {/* Background video */}
-      <video
-        className="absolute left-1/2 top-1/2 z-0 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 object-cover"
-        autoPlay
-        playsInline
-        muted
-        loop
-        preload="auto"
-        poster="/hero/poster.jpg" /* matches public/hero/poster.jpg */
+      {/* Background Video with Scale Effect */}
+      <motion.div 
+        style={{ scale, opacity }} 
+        className="absolute inset-0 z-0"
       >
-        {/* Provide at least one of these; webm first if you have it */}
-        <source src="/vid/hero.webm" type="video/webm" />
-        <source src="/vid/hero.mp4" type="video/mp4" />
-        {/* Fallback text for accessibility */}
-        Your browser does not support the background video.
-      </video>
+        <video
+          className="h-full w-full object-cover opacity-60"
+          autoPlay
+          playsInline
+          muted
+          loop
+          poster="/hero/poster.jpg"
+        >
+          <source src="/vid/hero.webm" type="video/webm" />
+          <source src="/vid/hero.mp4" type="video/mp4" />
+        </video>
+        {/* Tech Grid Overlay */}
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(18,18,18,0)_2px,transparent_2px),linear-gradient(90deg,rgba(18,18,18,0)_2px,transparent_2px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] opacity-20" />
+      </motion.div>
 
-      {/* Darken for readability */}
-      <div className="absolute inset-0 z-10 bg-black/50" />
-
-      {/* Centered content (fit within 16:10 safe width via section-narrow) */}
-      <div className="rog-layer absolute inset-0 grid place-items-center px-6 text-center">
-        <div className="section-narrow">
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 16 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="mx-auto max-w-5xl text-6xl font-extrabold tracking-tight text-white drop-shadow-[0_6px_24px_rgba(0,0,0,0.6)] md:text-8xl"
+      {/* Floating Content */}
+      <div className="absolute inset-0 z-10 grid place-items-center">
+        <motion.div 
+          style={{ y: textY }}
+          className="px-6 text-center"
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
-            Kai Zhao
-          </motion.h1>
+             {/* "Glitch" style title effect */}
+            <h1 className="text-7xl font-black uppercase tracking-tighter text-white md:text-[10rem] leading-none mix-blend-overlay">
+              Kai Zhao
+            </h1>
+            <h1 className="absolute inset-0 top-0 text-7xl font-black uppercase tracking-tighter text-white/20 blur-sm md:text-[10rem] leading-none">
+              Kai Zhao
+            </h1>
+          </motion.div>
+
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 10 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.08 }}
-            className="mt-4 text-xl font-semibold text-white/90 md:text-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="mt-6 font-mono text-sm tracking-[0.5em] text-cyan-400 md:text-base"
           >
-            Creator • Innovator • Leader
+            FULL STACK · ENGINEERING · DESIGN
           </motion.p>
-        </div>
+        </motion.div>
       </div>
-    </motion.section>
+      
+      {/* Scroll Indicator */}
+      <motion.div 
+        style={{ opacity: useTransform(scrollYProgress, [0, 0.1], [1, 0]) }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+      >
+        <div className="h-16 w-[1px] bg-gradient-to-b from-transparent via-white to-transparent opacity-50" />
+      </motion.div>
+    </section>
   );
 }
