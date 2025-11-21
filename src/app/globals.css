@@ -134,3 +134,76 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
+
+html, body {
+  background: #060606;
+  color: #e0e0e0;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* ROG Tech Grid Background */
+.tech-bg {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000; 
+}
+::-webkit-scrollbar-thumb {
+  background: #ff0033; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cc0029; 
+}
+
+/* Glitch Effect */
+.glitch-text {
+  position: relative;
+  color: white;
+}
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #060606;
+}
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -1px 0 #ff0033;
+  clip-path: inset(20% 0 80% 0);
+  animation: glitch-anim-1 3s infinite linear alternate-reverse;
+}
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -1px 0 #00f0ff;
+  clip-path: inset(50% 0 30% 0);
+  animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip-path: inset(20% 0 80% 0); }
+  20% { clip-path: inset(60% 0 10% 0); }
+  40% { clip-path: inset(40% 0 50% 0); }
+  60% { clip-path: inset(80% 0 5% 0); }
+  80% { clip-path: inset(10% 0 70% 0); }
+  100% { clip-path: inset(30% 0 20% 0); }
+}
+@keyframes glitch-anim-2 {
+  0% { clip-path: inset(10% 0 60% 0); }
+  20% { clip-path: inset(30% 0 10% 0); }
+  40% { clip-path: inset(70% 0 20% 0); }
+  60% { clip-path: inset(20% 0 50% 0); }
+  80% { clip-path: inset(50% 0 30% 0); }
+  100% { clip-path: inset(0% 0 80% 0); }
+}
