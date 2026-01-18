@@ -31,6 +31,7 @@ const config: Config = {
       fontFamily: {
         tech: ["var(--font-orbitron)", "sans-serif"],
         body: ["var(--font-roboto)", "sans-serif"],
+        serifDisplay: ["var(--font-playfair)", "serif"],
       },
       backgroundImage: {
         "grid-pattern":

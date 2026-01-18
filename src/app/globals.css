@@ -106,6 +106,59 @@ body {
     linear-gradient(to bottom, rgb(var(--grid) / 0.08) 1px, transparent 1px);
 }
 
+/* Darkened About section theme */
+.about-dark {
+  --bg: #050509;
+  --fg: #fff1f7;
+  --fg-muted: rgba(255, 241, 247, 0.68);
+  --border: rgba(232, 146, 182, 0.2);
+  --card: rgba(12, 8, 14, 0.95);
+  --card-2: rgba(18, 12, 20, 0.97);
+  --accent: 206 86 120;
+  --accent-2: 92 140 196;
+  --accent-contrast: #0b0b0f;
+  --grid: 92 140 196;
+  --glitch-bg: 5 5 9;
+  --neon-cyan: 92 140 196;
+  --neon-violet: 206 86 120;
+  --neon-magenta: 206 86 120;
+  --about-chip-bg: #f1f3f7;
+  --about-chip-border: #dfe4ec;
+  --about-chip-text: #1b2230;
+  --about-chip-icon-bg: #e8ecf3;
+  --about-chip-icon-border: #c8d0dc;
+  --about-chip-icon: #1b2230;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* About badges */
+.about-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 10px;
+  background: var(--about-chip-bg);
+  color: var(--about-chip-text);
+  border: 1px solid var(--about-chip-border);
+  padding: 0.2rem 0.5rem;
+  font-size: 0.92em;
+  font-weight: 600;
+  line-height: 1.1;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.about-badge-icon {
+  display: inline-grid;
+  place-items: center;
+  height: 1.05rem;
+  width: 1.05rem;
+  border-radius: 6px;
+  background: var(--about-chip-icon-bg);
+  border: 1px solid var(--about-chip-icon-border);
+  color: var(--about-chip-icon);
+}
+
 /* Glitch Text Effect */
 .glitch-text {
   position: relative;

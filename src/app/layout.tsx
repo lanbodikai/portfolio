@@ -1,5 +1,5 @@
 import "@/app/globals.css";
-import { Orbitron, Roboto } from "next/font/google";
+import { Orbitron, Playfair_Display, Roboto } from "next/font/google";
 import ThemeProvider from "@/components/theme/ThemeProvider";
 
 // Font setup
@@ -16,6 +16,13 @@ const roboto = Roboto({
   display: "swap", 
 });
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
 export const metadata = {
   title: "Kai Zhao – ROG Portfolio",
   description: "Engineer ⇄ PM — CV, interfaces, and product sense.",
@@ -25,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${orbitron.variable} ${roboto.variable} dark`}
+      className={`${orbitron.variable} ${roboto.variable} ${playfair.variable} dark`}
       suppressHydrationWarning
     >
       {/* Load FontAwesome just like the reference HTML */}

@@ -5,11 +5,9 @@ import CornerCard from "@/components/ui/CornerCard";
 import ContactCTA from "@/components/sections/ContactCTA";
 import TechSeparator from "@/components/ui/TechSeparator";
 
-const badgeBase =
-  "inline-flex items-center gap-2 rounded-xl bg-card px-3 py-1 text-[1.02em] font-semibold leading-none text-fg ring-1 ring-border shadow-sm transition-colors";
-const badgeIconWrap =
-  "inline-grid h-[1.05rem] w-[1.05rem] shrink-0 place-items-center rounded-lg border border-border bg-card-2";
-const badgeIcon = "block fa-fw text-[0.7em] leading-none text-rogRed";
+const badgeBase = "about-badge";
+const badgeIconWrap = "about-badge-icon";
+const badgeIcon = "block fa-fw text-[0.7em] leading-none";
 const nameBadgeBase = badgeBase;
 
 const BadgeIcon = ({ icon }: { icon: string }) => (
@@ -31,37 +29,38 @@ export default function Page() {
       </div>
 
       {/* 2. ABOUT SECTION - Slide & Blur Animations */}
-      <section id="about" className="relative py-24 md:py-32 tech-bg overflow-hidden">
+      <section id="about" className="relative py-24 md:py-32 tech-bg about-dark overflow-hidden">
         {/* Colorful Background Glows */}
-        <div className="absolute top-0 right-0 h-1/2 w-1/2 bg-rogRed/15 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-10 left-0 h-1/3 w-1/2 bg-rogCyan/15 blur-[140px] pointer-events-none" />
-        <div className="absolute top-1/3 left-1/3 h-40 w-40 rounded-full bg-rogCyan/20 blur-[90px] pointer-events-none" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(206,86,120,0.18),transparent_55%),radial-gradient(circle_at_85%_12%,rgba(92,140,196,0.22),transparent_50%)]" />
+        <div className="absolute top-0 right-0 h-1/2 w-1/2 bg-rogRed/12 blur-[160px] pointer-events-none" />
+        <div className="absolute bottom-10 left-0 h-1/3 w-1/2 bg-rogCyan/12 blur-[170px] pointer-events-none" />
+        <div className="absolute top-1/3 left-1/3 h-40 w-40 rounded-full bg-rogCyan/16 blur-[120px] pointer-events-none" />
         
-        <div className="mx-auto max-w-7xl px-6 md:px-12">
+        <div className="mx-auto max-w-7xl px-6 md:px-12 pl-[86px] md:pl-[158px]">
           <div className="flex flex-col items-center justify-center">
             <Reveal type="blur" delay={0.2} className="w-full max-w-3xl">
               <div className="space-y-6 text-left">
                 <div>
-                  <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[var(--fg)]">
+                  <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-[var(--fg)] font-serifDisplay">
                     About
                   </h2>
                   <div className="mt-3 h-1 w-16 bg-rogRed" />
                 </div>
                 <p className="text-[var(--fg-muted)] leading-relaxed text-lg">
-                  I'm Kai (Junkai) - a full-stack AI + web developer in the Bay Area. I'm studying IEOR at{" "}
+                  Hi!!! I'm Kai- a full-stack AI + web developer in the Bay Area. I'm studying IEOR at{" "}
                   <span className={nameBadgeBase}>
-                    <BadgeIcon icon="fa-solid fa-bear" />
+                    <BadgeIcon icon="fa-solid fa-building-columns" />
                     <span>UC Berkeley</span>
                   </span>{" "}
-                  with a Data Science minor. Love building end to end AI products that solve real, practical problems.
+                  with a Data Science minor.
                 </p>
                 <p className="text-[var(--fg-muted)] leading-relaxed text-lg">
-                  I'm building{" "}
+                  I'm currently building{" "}
                   <span className={nameBadgeBase}>
                     <BadgeIcon icon="fa-solid fa-computer-mouse" />
                     <span>MouseFit</span>
                   </span>
-                  , a web app that helps gamers find better-fitting peripherals by turning hand size + grip style into practical, no-BS recommendations.
+                  , a web product that helps gamers find BEST-Fitting peripherals by turning hand size + grip style into Ai-Prompted recommendations.
                 </p>
                 <p className="text-[var(--fg-muted)] leading-relaxed text-lg">
                   I mostly build in{" "}

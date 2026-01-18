@@ -25,15 +25,15 @@ export default function IntroOverlay() {
       {isLoading && (
         <motion.div
           initial={{ y: 0 }}
-          exit={{ y: "-100%", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }}
+          exit={{ scale: 1.08, opacity: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }}
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-bg text-fg"
         >
-          <div className="w-full max-w-md px-6 text-center">
+          <div className="w-full max-w-md px-6 text-left">
             <h1 
-              className="glitch-text mb-6 text-4xl font-black uppercase tracking-[0.2em] md:text-6xl" 
-              data-text="INITIALIZING"
+              className="glitch-text mb-6 text-4xl font-black uppercase tracking-[0.2em] md:text-6xl font-tech" 
+              data-text="LOADING"
             >
-              INITIALIZING
+              LOADING
             </h1>
             
             <div className="mx-auto h-1 w-full overflow-hidden bg-card-2">
