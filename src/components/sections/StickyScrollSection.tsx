@@ -38,7 +38,7 @@ export default function StickyScrollSection({
     <section
       id={id}
       ref={ref}
-      className="sticky top-0 min-h-screen w-full overflow-hidden bg-rogDark border-t border-white/10"
+      className="sticky top-0 min-h-screen w-full overflow-hidden bg-bg border-t border-border"
       style={{ zIndex: index }}
     >
       <div className="absolute inset-0 tech-bg opacity-30 pointer-events-none" />
@@ -55,18 +55,18 @@ export default function StickyScrollSection({
               </span>
             </div>
 
-            <h2 className="mb-6 text-5xl font-black uppercase leading-none tracking-tighter text-white md:text-7xl">
+            <h2 className="mb-6 text-5xl font-black uppercase leading-none tracking-tighter text-fg md:text-7xl">
               {title}
             </h2>
 
-            <div className="mb-8 text-lg leading-relaxed text-gray-400">
+            <div className="mb-8 text-lg leading-relaxed text-muted">
               {children}
             </div>
 
             {tags && (
               <div className="mb-8 flex flex-wrap gap-2">
                 {tags.map((tag) => (
-                  <span key={tag} className="border border-white/10 bg-white/5 px-3 py-1 font-mono text-xs text-rogCyan">
+                  <span key={tag} className="border border-border bg-card px-3 py-1 font-mono text-xs text-rogCyan">
                     {tag}
                   </span>
                 ))}
@@ -77,7 +77,7 @@ export default function StickyScrollSection({
               <a
                 href={ctaHref}
                 target="_blank"
-                className="group inline-flex w-fit items-center gap-2 border border-rogRed bg-transparent px-8 py-3 font-bold uppercase tracking-widest text-white transition-all hover:bg-rogRed hover:text-white"
+                className="group inline-flex w-fit items-center gap-2 border-2 border-border bg-transparent px-8 py-3 font-bold uppercase tracking-widest text-fg transition-all hover:bg-rogRed hover:text-accent-contrast dark:border dark:border-rogRed dark:hover:bg-[var(--border)] dark:hover:text-[var(--fg)]"
               >
                 <span>Launch System</span>
                 <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -86,12 +86,12 @@ export default function StickyScrollSection({
           </div>
 
           {/* Image Content */}
-          <div className={`relative h-[50vh] w-full overflow-hidden border border-white/10 bg-black md:h-[60vh] ${align === "right" ? "md:order-2" : "md:order-1"}`}>
+          <div className={`relative h-[50vh] w-full overflow-hidden border-2 border-border bg-card-2 dark:border md:h-[60vh] ${align === "right" ? "md:order-2" : "md:order-1"}`}>
             {/* Corner Decorations */}
-            <div className="absolute left-0 top-0 z-10 h-4 w-4 border-l-2 border-t-2 border-rogRed" />
-            <div className="absolute right-0 top-0 z-10 h-4 w-4 border-r-2 border-t-2 border-rogCyan" />
-            <div className="absolute bottom-0 left-0 z-10 h-4 w-4 border-b-2 border-l-2 border-rogCyan" />
-            <div className="absolute bottom-0 right-0 z-10 h-4 w-4 border-b-2 border-r-2 border-rogRed" />
+            <div className="absolute left-0 top-0 z-10 h-4 w-4 border-l-2 border-t-2 border-border dark:border-rogRed" />
+            <div className="absolute right-0 top-0 z-10 h-4 w-4 border-r-2 border-t-2 border-border dark:border-rogCyan" />
+            <div className="absolute bottom-0 left-0 z-10 h-4 w-4 border-b-2 border-l-2 border-border dark:border-rogCyan" />
+            <div className="absolute bottom-0 right-0 z-10 h-4 w-4 border-b-2 border-r-2 border-border dark:border-rogRed" />
 
             {img.endsWith(".mp4") ? (
               <motion.video
@@ -117,3 +117,4 @@ export default function StickyScrollSection({
     </section>
   );
 }
+

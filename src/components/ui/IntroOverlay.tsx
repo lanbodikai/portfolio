@@ -26,7 +26,7 @@ export default function IntroOverlay() {
         <motion.div
           initial={{ y: 0 }}
           exit={{ y: "-100%", transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-black text-white"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-bg text-fg"
         >
           <div className="w-full max-w-md px-6 text-center">
             <h1 
@@ -36,9 +36,9 @@ export default function IntroOverlay() {
               INITIALIZING
             </h1>
             
-            <div className="mx-auto h-1 w-full overflow-hidden bg-gray-900">
+            <div className="mx-auto h-1 w-full overflow-hidden bg-card-2">
               <motion.div 
-                className="h-full bg-rogRed shadow-[0_0_15px_#ff0033]"
+                className="h-full bg-rogRed shadow-[0_0_15px_rgb(var(--accent)/0.7)]"
                 initial={{ width: "0%" }}
                 animate={{ width: `${progress}%` }}
               />

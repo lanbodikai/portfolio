@@ -42,10 +42,10 @@ export default function ScrollSpyNav() {
   return (
     <div className="fixed right-6 top-1/2 z-50 hidden -translate-y-1/2 flex-col gap-4 md:flex">
       {/* Progress Line Background */}
-      <div className="absolute right-[5px] top-0 h-full w-[2px] bg-white/10">
+      <div className="absolute right-[5px] top-0 h-full w-[2px] bg-border">
         <motion.div 
           style={{ scaleY, transformOrigin: "top" }} 
-          className="w-full bg-cyan-400"
+          className="w-full bg-rogCyan"
         />
       </div>
 
@@ -57,14 +57,14 @@ export default function ScrollSpyNav() {
         >
           <span 
             className={`text-[10px] font-bold tracking-widest transition-all duration-300 ${
-              active === item.id ? "text-white opacity-100 translate-x-0" : "text-gray-500 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0"
+              active === item.id ? "text-fg opacity-100 translate-x-0" : "text-muted-2 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0"
             }`}
           >
             {item.label}
           </span>
           <div 
             className={`relative z-10 h-3 w-3 rotate-45 border transition-all duration-300 ${
-              active === item.id ? "bg-cyan-400 border-cyan-400 scale-100" : "bg-black border-gray-600 scale-75 group-hover:border-white"
+              active === item.id ? "bg-rogCyan border-border dark:border-rogCyan scale-100" : "bg-bg border-border scale-75 group-hover:border-fg"
             }`}
           />
         </button>
@@ -72,3 +72,4 @@ export default function ScrollSpyNav() {
     </div>
   );
 }
+

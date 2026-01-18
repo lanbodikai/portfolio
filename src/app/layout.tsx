@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 import { Orbitron, Roboto } from "next/font/google";
+import ThemeProvider from "@/components/theme/ThemeProvider";
 
 // Font setup
 const orbitron = Orbitron({ 
@@ -22,12 +23,18 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`bg-[#060606] text-white ${orbitron.variable} ${roboto.variable}`}>
+    <html
+      lang="en"
+      className={`${orbitron.variable} ${roboto.variable} dark`}
+      suppressHydrationWarning
+    >
       {/* Load FontAwesome just like the reference HTML */}
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
       </head>
-      <body className="antialiased font-body">{children}</body>
+      <body className="min-h-screen bg-[var(--bg)] text-[var(--fg)] antialiased font-body">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

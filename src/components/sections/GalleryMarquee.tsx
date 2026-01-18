@@ -45,7 +45,7 @@ function Marquee({ reverse = false, speed = 30, sources }: { reverse?: boolean; 
       >
         <div className="flex min-w-max gap-6">
           {sources.map((src, i) => (
-            <div key={`a-${i}`} className="h-40 w-[280px] overflow-hidden rounded-xl border border-white/10 bg-white/5">
+            <div key={`a-${i}`} className="h-40 w-[280px] overflow-hidden rounded-xl border-2 border-border bg-card dark:border">
               {src.toLowerCase().endsWith(".mp4") ? (
                 <video src={src} className="h-full w-full object-cover" autoPlay muted loop playsInline />
               ) : (
@@ -56,7 +56,7 @@ function Marquee({ reverse = false, speed = 30, sources }: { reverse?: boolean; 
         </div>
         <div className="flex min-w-max gap-6" aria-hidden>
           {sources.map((src, i) => (
-            <div key={`b-${i}`} className="h-40 w-[280px] overflow-hidden rounded-xl border border-white/10 bg-white/5">
+            <div key={`b-${i}`} className="h-40 w-[280px] overflow-hidden rounded-xl border-2 border-border bg-card dark:border">
               {src.toLowerCase().endsWith(".mp4") ? (
                 <video src={src} className="h-full w-full object-cover" autoPlay muted loop playsInline />
               ) : (
@@ -69,3 +69,4 @@ function Marquee({ reverse = false, speed = 30, sources }: { reverse?: boolean; 
     </div>
   );
 }
+

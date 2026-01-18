@@ -1,23 +1,56 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --neon-cyan: #22d3ee;
-  --neon-violet: #7c3aed;
-  --neon-magenta: #f43f5e;
+  color-scheme: light;
+  --bg: #f1f3f7;
+  --fg: #0c0f14;
+  --fg-muted: rgba(12, 15, 20, 0.62);
+  --border: #111111;
+  --card: rgba(255, 255, 255, 0.95);
+  --card-2: rgba(245, 248, 252, 0.98);
+  --accent: 216 84 127;
+  --accent-2: 96 132 211;
+  --accent-contrast: #0c0f14;
+  --grid: 96 132 211;
+  --glitch-bg: 241 243 247;
+  --neon-cyan: 96 132 211;
+  --neon-violet: 216 84 127;
+  --neon-magenta: 216 84 127;
+  --scrollbar-track: 241 243 247;
+  --scrollbar-thumb: 216 84 127;
+  --scrollbar-thumb-hover: 12 15 20;
 }
 
-html, body {
-  background: #050505;
-  color: white;
-  /* Smooth scroll behavior is crucial for this effect */
-  scroll-behavior: smooth; 
+.dark {
+  color-scheme: dark;
+  --bg: #0b0b0f;
+  --fg: #fff1f7;
+  --fg-muted: rgba(255, 241, 247, 0.7);
+  --border: rgba(232, 146, 182, 0.2);
+  --card: rgba(16, 10, 16, 0.92);
+  --card-2: rgba(22, 14, 22, 0.95);
+  --accent: 206 86 120;
+  --accent-2: 108 166 222;
+  --accent-contrast: #0b0b0f;
+  --grid: 108 166 222;
+  --glitch-bg: 11 11 15;
+  --neon-cyan: 108 166 222;
+  --neon-violet: 206 86 120;
+  --neon-magenta: 206 86 120;
+  --scrollbar-track: 11 11 15;
+  --scrollbar-thumb: 206 86 120;
+  --scrollbar-thumb-hover: 108 166 222;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  /* Deep space ROG-style background */
-  background: radial-gradient(120% 120% at 50% 0%, #0f1119 0%, #050505 60%);
+  background: var(--bg);
+  color: var(--fg);
   overflow-x: hidden;
 }
 
@@ -58,11 +91,19 @@ body {
 
 /* Cyberpunk Grid - Subtle background texture */
 .bg-grid-pattern {
-  background-image: 
-    linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, rgb(var(--grid) / 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(var(--grid) / 0.12) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+}
+
+/* ROG Tech Grid Background */
+.tech-bg {
+  background-size: 50px 50px;
+  background-image:
+    linear-gradient(to right, rgb(var(--grid) / 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(var(--grid) / 0.08) 1px, transparent 1px);
 }
 
 /* Glitch Text Effect */
@@ -77,17 +118,17 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #050505;
+  background: rgb(var(--glitch-bg));
 }
 .glitch-text::before {
   left: 2px;
-  text-shadow: -1px 0 #ff00c1;
+  text-shadow: -1px 0 rgb(var(--neon-magenta));
   clip-path: inset(44% 0 61% 0);
   animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
 }
 .glitch-text::after {
   left: -2px;
-  text-shadow: -1px 0 #00fff9;
+  text-shadow: -1px 0 rgb(var(--neon-cyan));
   clip-path: inset(50% 0 30% 0);
   animation: glitch-anim-2 3s infinite linear alternate-reverse;
 }
@@ -111,188 +152,26 @@ body {
 
 /* Utilities */
 .text-glow {
-  text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+  text-shadow: 0 0 20px rgb(var(--neon-cyan) / 0.5);
 }
 
 /* Selection */
 ::selection {
-  background: var(--neon-magenta);
-  color: white;
+  background: rgb(var(--accent));
+  color: var(--accent-contrast);
 }
 
-/* Scrollbar Hiding */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #050505; 
+  background: rgb(var(--scrollbar-track));
 }
 ::-webkit-scrollbar-thumb {
-  background: #333; 
+  background: rgb(var(--scrollbar-thumb));
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-}
-
-html, body {
-  background: #060606;
-  color: #e0e0e0;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
-/* ROG Tech Grid Background */
-.tech-bg {
-  background-size: 40px 40px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #000; 
-}
-::-webkit-scrollbar-thumb {
-  background: #ff0033; 
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #cc0029; 
-}
-
-/* Glitch Effect */
-.glitch-text {
-  position: relative;
-  color: white;
-}
-.glitch-text::before,
-.glitch-text::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #060606;
-}
-.glitch-text::before {
-  left: 2px;
-  text-shadow: -1px 0 #ff0033;
-  clip-path: inset(20% 0 80% 0);
-  animation: glitch-anim-1 3s infinite linear alternate-reverse;
-}
-.glitch-text::after {
-  left: -2px;
-  text-shadow: -1px 0 #00f0ff;
-  clip-path: inset(50% 0 30% 0);
-  animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-anim-1 {
-  0% { clip-path: inset(20% 0 80% 0); }
-  20% { clip-path: inset(60% 0 10% 0); }
-  40% { clip-path: inset(40% 0 50% 0); }
-  60% { clip-path: inset(80% 0 5% 0); }
-  80% { clip-path: inset(10% 0 70% 0); }
-  100% { clip-path: inset(30% 0 20% 0); }
-}
-@keyframes glitch-anim-2 {
-  0% { clip-path: inset(10% 0 60% 0); }
-  20% { clip-path: inset(30% 0 10% 0); }
-  40% { clip-path: inset(70% 0 20% 0); }
-  60% { clip-path: inset(20% 0 50% 0); }
-  80% { clip-path: inset(50% 0 30% 0); }
-  100% { clip-path: inset(0% 0 80% 0); }
-}
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --neon-cyan: #06b6d4;
-  --neon-purple: #8b5cf6;
-}
-
-html, body {
-  background: #050507; /* Deep purple-black */
-  color: #e0e0e0;
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
-/* Tech Grid Background - Updated to subtle purple tint */
-.tech-bg {
-  background-size: 50px 50px;
-  background-image: 
-    linear-gradient(to right, rgba(139, 92, 246, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
-}
-
-/* Custom Scrollbar - Purple */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #050507; 
-}
-::-webkit-scrollbar-thumb {
-  background: #8b5cf6; 
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #06b6d4; 
-}
-
-/* Selection Color */
-::selection {
-  background: #8b5cf6;
-  color: white;
-}
-
-/* Glitch Effect - Updated Colors */
-.glitch-text {
-  position: relative;
-  color: white;
-}
-.glitch-text::before,
-.glitch-text::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #050507;
-}
-.glitch-text::before {
-  left: 2px;
-  text-shadow: -1px 0 #8b5cf6; /* Purple Shadow */
-  clip-path: inset(20% 0 80% 0);
-  animation: glitch-anim-1 3s infinite linear alternate-reverse;
-}
-.glitch-text::after {
-  left: -2px;
-  text-shadow: -1px 0 #06b6d4; /* Cyan Shadow */
-  clip-path: inset(50% 0 30% 0);
-  animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-anim-1 {
-  0% { clip-path: inset(20% 0 80% 0); }
-  20% { clip-path: inset(60% 0 10% 0); }
-  40% { clip-path: inset(40% 0 50% 0); }
-  60% { clip-path: inset(80% 0 5% 0); }
-  80% { clip-path: inset(10% 0 70% 0); }
-  100% { clip-path: inset(30% 0 20% 0); }
-}
-@keyframes glitch-anim-2 {
-  0% { clip-path: inset(10% 0 60% 0); }
-  20% { clip-path: inset(30% 0 10% 0); }
-  40% { clip-path: inset(70% 0 20% 0); }
-  60% { clip-path: inset(20% 0 50% 0); }
-  80% { clip-path: inset(50% 0 30% 0); }
-  100% { clip-path: inset(0% 0 80% 0); }
+  background: rgb(var(--scrollbar-thumb-hover));
 }

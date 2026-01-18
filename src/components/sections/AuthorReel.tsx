@@ -132,7 +132,7 @@ export default function AboutReel() {
   return (
     <motion.section
       ref={sectionRef}
-      className="relative w-full text-white"
+      className="relative w-full text-fg"
       initial={{ opacity: 0 }}
       animate={{ opacity: sectionInView ? 1 : 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -140,7 +140,7 @@ export default function AboutReel() {
       {/* Header — retitled to Projects */}
       <div className="pointer-events-none z-10 pt-24 pb-12 text-center">
         <h2 className="text-4xl font-extrabold tracking-tight md:text-6xl">Projects</h2>
-        <div className="mt-1 text-white/70">{SLIDES[logical]?.title ?? ""}</div>
+        <div className="mt-1 text-muted">{SLIDES[logical]?.title ?? ""}</div>
       </div>
 
       {/* Viewport: grid centers content vertically in the remaining viewport height */}
@@ -177,7 +177,7 @@ export default function AboutReel() {
                     {/* Bottom-left overlay with title + description */}
                     <div className="pointer-events-none absolute inset-x-4 bottom-8 text-left md:inset-x-6 md:bottom-10">
                       <div className="text-xl font-extrabold drop-shadow-lg md:text-3xl">{s.title}</div>
-                      <div className="mt-1 max-w-[48ch] text-xs text-white/80 md:text-sm">{getSlideDescription(s)}</div>
+                      <div className="mt-1 max-w-[48ch] text-xs text-muted md:text-sm">{getSlideDescription(s)}</div>
                     </div>
                   </div>
                 </div>
@@ -191,11 +191,11 @@ export default function AboutReel() {
           {/* prev */}
           <button
             aria-label="Previous"
-            className="h-4 w-4 rounded-sm bg-white/12 transition hover:bg-white/25"
+            className="h-4 w-4 rounded-sm bg-card transition hover:bg-card-2"
             onClick={() => setIdx((v) => v - 1)}
           />
           {/* thin rail */}
-          <div className="relative h-[3px] flex-1 rounded-full bg-white/15">
+          <div className="relative h-[3px] flex-1 rounded-full bg-border">
             <motion.div
               className="absolute left-0 top-0 h-full rounded-full bg-gradient-to-r from-[#ff49ff] via-[#7a5bff] to-[#3ef9ff]"
               style={{ width: `${progress * 100}%` }}
@@ -204,13 +204,13 @@ export default function AboutReel() {
           {/* next */}
           <button
             aria-label="Next"
-            className="h-4 w-4 rounded-sm bg-white/12 transition hover:bg-white/25"
+            className="h-4 w-4 rounded-sm bg-card transition hover:bg-card-2"
             onClick={() => setIdx((v) => v + 1)}
           />
           {/* pause */}
           <button
             aria-label={paused ? "Play" : "Pause"}
-            className="ml-1 h-4 w-[12px] rounded-sm bg-white/22 transition hover:bg-white/35"
+            className="ml-1 h-4 w-[12px] rounded-sm bg-card transition hover:bg-card-2"
             onClick={() => setPaused((p) => !p)}
             title={paused ? "Play" : "Pause"}
           />
@@ -223,7 +223,7 @@ export default function AboutReel() {
               key={i}
               className={[
                 "h-[6px] w-[6px] rounded-full transition", 
-                i === logical ? "bg-white" : "bg-white/35",
+                i === logical ? "bg-fg" : "bg-muted opacity-40",
               ].join(" ")}
             />
           ))}
@@ -238,13 +238,13 @@ function SlideContent({ slide }: { slide: Slide }) {
   switch (slide.type) {
     case "three-cards":
       return (
-        <div className="grid h-full w-full place-items-center text-white">
+        <div className="grid h-full w-full place-items-center text-fg">
           {/* Copy ProjectsBriefHorizontal ThreeCards formatting (scaled) */}
           <div className="grid w-full max-w-[720px] grid-cols-3 gap-3 justify-items-center">
             {(slide.cards ?? []).map((card, i) => (
               <div key={i} className="flex flex-col items-center">
                 <div className="neon-frame w-full max-w-[9rem]" style={{ ['--neon' as any]: '#7a5bff', ['--r' as any]: '10px' }}>
-                  <div className="neon-content aspect-square bg-[#070b14]">
+                  <div className="neon-content aspect-square bg-card-2">
                     {slide.images && slide.images[i] ? (
                       <img src={slide.images[i]} alt="" className="h-full w-full object-cover" />
                     ) : null}
@@ -252,7 +252,7 @@ function SlideContent({ slide }: { slide: Slide }) {
                 </div>
                 <div className="mt-2 text-center">
                   <div className="text-xs font-extrabold md:text-sm">{card.title}</div>
-                  <p className="mt-1 max-w-[24ch] text-[11px] leading-snug text-white/80 md:text-xs">{card.desc}</p>
+                  <p className="mt-1 max-w-[24ch] text-[11px] leading-snug text-muted md:text-xs">{card.desc}</p>
                 </div>
               </div>
             ))}
@@ -262,12 +262,12 @@ function SlideContent({ slide }: { slide: Slide }) {
     case "video-compare":
       return (
         // Match Mousefit ThreeCards layout: two square images (1,2) + framed text (3)
-        <div className="grid h-full w-full place-items-center text-white">
+        <div className="grid h-full w-full place-items-center text-fg">
           <div className="grid w-full max-w-[900px] grid-cols-3 gap-0 justify-items-center" style={{ gap: '2px' }}>
             {/* Picture 1 — same size/place as Mousefit card 1 */}
             <div className="flex flex-col items-center">
               <div className="neon-frame neon-tight w-full max-w-[11.7rem]" style={{ ['--neon' as any]: '#7a5bff', ['--r' as any]: '10px' }}>
-                <div className="neon-content aspect-square bg-[#070b14]">
+                <div className="neon-content aspect-square bg-card-2">
                   {slide.images && slide.images[0] ? (
                     <img src={slide.images[0]} alt="" className="h-full w-full object-cover" />
                   ) : null}
@@ -278,7 +278,7 @@ function SlideContent({ slide }: { slide: Slide }) {
             {/* Picture 2 — same size/place as Mousefit card 2 */}
             <div className="flex flex-col items-center">
               <div className="neon-frame neon-tight w-full max-w-[11.7rem]" style={{ ['--neon' as any]: '#7a5bff', ['--r' as any]: '10px' }}>
-                <div className="neon-content aspect-square bg-[#070b14]">
+                <div className="neon-content aspect-square bg-card-2">
                   {slide.images && slide.images[1] ? (
                     <img src={slide.images[1]} alt="" className="h-full w-full object-cover" />
                   ) : null}
@@ -289,9 +289,9 @@ function SlideContent({ slide }: { slide: Slide }) {
             {/* Text — framed square to mirror card 3 */}
             <div className="flex flex-col items-center">
               <div className="neon-frame neon-tight w-full max-w-[11.7rem]" style={{ ['--neon' as any]: '#7a5bff', ['--r' as any]: '10px' }}>
-                <div className="neon-content aspect-square bg-[#070b14] p-3">
+                <div className="neon-content aspect-square bg-card-2 p-3">
                   {slide.bullets && slide.bullets.length > 0 && (
-                    <ul className="list-disc space-y-1 pl-4 text-white/85 text-[12px] leading-snug md:text-sm">
+                    <ul className="list-disc space-y-1 pl-4 text-muted text-[12px] leading-snug md:text-sm">
                       {slide.bullets.map((b, i) => (
                         <li key={i}>{b}</li>
                       ))}
@@ -306,12 +306,12 @@ function SlideContent({ slide }: { slide: Slide }) {
     case "specs-right":
       return (
         // Financial Agent: picture with rounded neon frame; text aligned on same Y axis; centered gap
-        <div className="grid h-full w-full place-items-center text-white">
+        <div className="grid h-full w-full place-items-center text-fg">
           <div className="grid w-full max-w-[760px] grid-cols-2 items-center justify-items-center gap-8">
             {/* Picture with same glow as Mousefit cards */}
             <div className="flex flex-col items-center">
               <div className="neon-frame" style={{ ['--neon' as any]: '#7a5bff', ['--r' as any]: '10px' }}>
-                <div className="neon-content h-[260px] w-[260px] md:h-[300px] md:w-[300px] bg-[#070b14]">
+                <div className="neon-content h-[260px] w-[260px] md:h-[300px] md:w-[300px] bg-card-2">
                   {slide.images && slide.images[0] ? (
                     <img src={slide.images[0]} alt="" className="h-full w-full object-cover" />
                   ) : null}
@@ -321,7 +321,7 @@ function SlideContent({ slide }: { slide: Slide }) {
             {/* Text column — same Y-axis as picture */}
             <div className="w-[260px] md:w-[300px] text-left">
               {slide.bullets && slide.bullets.length > 0 && (
-                <ul className="mt-2 list-disc space-y-1 pl-5 text-white/85 text-base md:text-lg">
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-muted text-base md:text-lg">
                   {slide.bullets.map((b, i) => (
                     <li key={i}>{b}</li>
                   ))}
@@ -333,13 +333,13 @@ function SlideContent({ slide }: { slide: Slide }) {
       );
     case "amd-tri-cards":
       return (
-        <div className="grid h-full w-full place-items-center text-white">
+        <div className="grid h-full w-full place-items-center text-fg">
           {/* Mirror Projects AmdTriCards compact sizing */}
           <div className="grid w-full max-w-[700px] grid-cols-3 gap-3 justify-items-center">
             {(slide.cards ?? []).map((c, i) => (
               <div key={i} className="flex w-[220px] flex-col items-center">
                 <div className="neon-frame w-[200px] md:w-[220px]" style={{ ['--neon' as any]: '#7a5bff', ['--r' as any]: '12px' }}>
-                  <div className="neon-content aspect-[4/3] bg-[#071016]">
+                  <div className="neon-content aspect-[4/3] bg-card-2">
                     {slide.images && slide.images[i] ? (
                       <img src={slide.images[i]} alt="" className="h-full w-full object-cover" />
                     ) : null}
@@ -347,7 +347,7 @@ function SlideContent({ slide }: { slide: Slide }) {
                 </div>
                 <div className="mt-2 w-[200px] text-left md:w-[220px]">
                   <div className="text-xs font-extrabold md:text-sm">{c.title}</div>
-                  {c.desc && <div className="mt-1 text-[11px] text-white/80 md:text-xs leading-snug">{c.desc}</div>}
+                  {c.desc && <div className="mt-1 text-[11px] text-muted md:text-xs leading-snug">{c.desc}</div>}
                 </div>
               </div>
             ))}
@@ -367,3 +367,4 @@ function getSlideDescription(slide: Slide): string {
     (slide.type === "three-cards" ? "Feature highlights" : "")
   );
 }
+

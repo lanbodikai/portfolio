@@ -26,7 +26,7 @@ export default function ContactCTA(_: React.HTMLAttributes<HTMLElement>) {
     <motion.section
       ref={sectionRef}
       id="contact"
-      className="relative py-24 md:py-32"
+      className="relative pt-8 pb-24 md:pt-12 md:pb-32"
       initial={{ opacity: 0 }}
       animate={{ opacity: inView ? 1 : 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -36,12 +36,12 @@ export default function ContactCTA(_: React.HTMLAttributes<HTMLElement>) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mx-auto w-full max-w-4xl rounded-3xl border border-white/10 bg-[#0a0a0c] p-10 text-center md:p-16"
+        className="mx-auto w-full max-w-4xl rounded-3xl border-2 border-border bg-card p-10 text-center dark:border md:p-16"
       >
-        <h3 className="font-tech text-4xl font-bold uppercase tracking-tight text-white md:text-6xl">
+        <h3 className="font-tech text-4xl font-bold uppercase tracking-tight text-fg md:text-6xl">
           Get in <span className="text-rogCyan">Touch</span>
         </h3>
-        <p className="mx-auto mt-4 max-w-xl text-lg text-gray-400">
+        <p className="mx-auto mt-4 max-w-xl text-lg text-muted">
           Got a product brewing? Let's build something intelligent together.
         </p>
 
@@ -53,10 +53,10 @@ export default function ContactCTA(_: React.HTMLAttributes<HTMLElement>) {
             href={linkedinUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 py-6 transition-all hover:border-rogRed hover:bg-rogRed/10"
+            className="group flex flex-col items-center justify-center rounded-xl border-2 border-border bg-card py-6 transition-all hover:bg-rogRed/10 dark:border dark:hover:border-rogRed"
           >
-            <i className="fa-brands fa-linkedin-in mb-3 text-2xl text-gray-400 transition-colors group-hover:text-rogRed"></i>
-            <span className="font-mono text-xs font-bold uppercase tracking-widest text-gray-300 group-hover:text-white">
+            <i className="fa-brands fa-linkedin-in mb-3 text-2xl text-muted transition-colors group-hover:text-rogRed"></i>
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-muted group-hover:text-fg">
               LinkedIn
             </span>
           </a>
@@ -66,10 +66,10 @@ export default function ContactCTA(_: React.HTMLAttributes<HTMLElement>) {
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 py-6 transition-all hover:border-rogCyan hover:bg-rogCyan/10"
+            className="group flex flex-col items-center justify-center rounded-xl border-2 border-border bg-card py-6 transition-all hover:bg-rogCyan/10 dark:border dark:hover:border-rogCyan"
           >
-            <i className="fa-brands fa-github mb-3 text-2xl text-gray-400 transition-colors group-hover:text-rogCyan"></i>
-            <span className="font-mono text-xs font-bold uppercase tracking-widest text-gray-300 group-hover:text-white">
+            <i className="fa-brands fa-github mb-3 text-2xl text-muted transition-colors group-hover:text-rogCyan"></i>
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-muted group-hover:text-fg">
               GitHub
             </span>
           </a>
@@ -77,10 +77,10 @@ export default function ContactCTA(_: React.HTMLAttributes<HTMLElement>) {
           {/* Email */}
           <a
             href={`mailto:${email}`}
-            className="group flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 py-6 transition-all hover:border-rogRed hover:bg-rogRed/10"
+            className="group flex flex-col items-center justify-center rounded-xl border-2 border-border bg-card py-6 transition-all hover:bg-rogRed/10 dark:border dark:hover:border-rogRed"
           >
-            <i className="fa-solid fa-envelope mb-3 text-2xl text-gray-400 transition-colors group-hover:text-rogRed"></i>
-            <span className="font-mono text-xs font-bold uppercase tracking-widest text-gray-300 group-hover:text-white">
+            <i className="fa-solid fa-envelope mb-3 text-2xl text-muted transition-colors group-hover:text-rogRed"></i>
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-muted group-hover:text-fg">
               Email
             </span>
           </a>
@@ -88,10 +88,10 @@ export default function ContactCTA(_: React.HTMLAttributes<HTMLElement>) {
           {/* Phone */}
           <a
             href={`tel:${phone.replace(/[^+\d]/g, "")}`}
-            className="group flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 py-6 transition-all hover:border-rogCyan hover:bg-rogCyan/10"
+            className="group flex flex-col items-center justify-center rounded-xl border-2 border-border bg-card py-6 transition-all hover:bg-rogCyan/10 dark:border dark:hover:border-rogCyan"
           >
-            <i className="fa-solid fa-phone mb-3 text-2xl text-gray-400 transition-colors group-hover:text-rogCyan"></i>
-            <span className="font-mono text-xs font-bold uppercase tracking-widest text-gray-300 group-hover:text-white">
+            <i className="fa-solid fa-phone mb-3 text-2xl text-muted transition-colors group-hover:text-rogCyan"></i>
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-muted group-hover:text-fg">
               Phone
             </span>
           </a>
@@ -99,10 +99,10 @@ export default function ContactCTA(_: React.HTMLAttributes<HTMLElement>) {
           {/* WeChat (Spans 2 cols on mobile to center) */}
           <button
             onClick={copyWeChat}
-            className="group col-span-2 flex flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 py-6 transition-all hover:border-rogRed hover:bg-rogRed/10 md:col-span-1"
+            className="group col-span-2 flex flex-col items-center justify-center rounded-xl border-2 border-border bg-card py-6 transition-all hover:bg-rogRed/10 dark:border dark:hover:border-rogRed md:col-span-1"
           >
-            <i className="fa-brands fa-weixin mb-3 text-2xl text-gray-400 transition-colors group-hover:text-rogRed"></i>
-            <span className="font-mono text-xs font-bold uppercase tracking-widest text-gray-300 group-hover:text-white">
+            <i className="fa-brands fa-weixin mb-3 text-2xl text-muted transition-colors group-hover:text-rogRed"></i>
+            <span className="font-mono text-xs font-bold uppercase tracking-widest text-muted group-hover:text-fg">
               {copied ? "Copied!" : "WeChat"}
             </span>
           </button>
@@ -112,3 +112,4 @@ export default function ContactCTA(_: React.HTMLAttributes<HTMLElement>) {
     </motion.section>
   );
 }
+
