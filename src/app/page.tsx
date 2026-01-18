@@ -70,6 +70,10 @@ export default function Page() {
                       <span>JavaScript</span>
                     </span>
                     <span className={badgeBase}>
+                      <BadgeIcon icon="fa-solid fa-code" />
+                      <span>TypeScript</span>
+                    </span>
+                    <span className={badgeBase}>
                       <BadgeIcon icon="fa-brands fa-python" />
                       <span>Python</span>
                     </span>
@@ -152,8 +156,8 @@ export default function Page() {
             <Reveal type="right" threshold={0.3}>
               <CornerCard
                 title="Mouse-Fit"
-                subtitle="01 // FULLSTACK AI PRODUCT"
-                description="A browser-based ergonomic analysis tool. It uses computer vision to generate a real-time mesh of your hand, calibrates physical size using a standard credit card, and matches you with the perfect hardware."
+                subtitle="01 // Fullstack Web Application"
+                description="A browser-based ergonomic analysis tool. It uses computer vision to compute a real-time measurement of your hand, calibrates physical size using a standard credit card, and matches you with the perfect gaming mouse."
                 img="/projects/mousefit-hero.jpg"
                 align="right"
                 href="https://mousefit.pro"
@@ -166,7 +170,7 @@ export default function Page() {
             <Reveal type="left" threshold={0.3}>
               <CornerCard 
                 title="VentureSignal"
-                subtitle="02 // VC AI ASSISTANT"
+                subtitle="02 // Chrome Extension"
                 description="The intelligent VC assistant. An AI-powered Chrome extension acting as a 'second brain' for investors. It parses startup websites, passively monitors for traction signals, and auto-drafts re-engagement emails."
                 img="/projects/venturesignal.jpg" // Ensure you add an image with this name
                 align="left"
@@ -180,11 +184,11 @@ export default function Page() {
             <Reveal type="right" threshold={0.3}>
               <CornerCard 
                 title="ScratchGPT"
-                subtitle="03 // AI AGENT"
-                description="Bridging the gap between natural language and logic. A creative agent that translates plain English instructions into fully functional, block-based Scratch projects."
+                subtitle="03 // @Polylabs Inc"
+                description="Help debugged and developed a curriculum plan based on a creative agent that translates plain English instructions into fully functional, block-based Scratch code. Targeting K-12 students for educational purpose."
                 img="/projects/scratchgpt-hero.png"
                 align="right"
-                href="https://stax.fun"
+                href="https://stax.fun/editor"
               />
             </Reveal>
             
@@ -195,8 +199,8 @@ export default function Page() {
             <Reveal type="left" threshold={0.3}>
               <CornerCard 
                 title="Financial AI Agent"
-                subtitle="04 // AI AGENT"
-                description="An AI-driven financial analyst agent. It leverages Llama 3.2 and LangChain to extract, normalize, and summarize complex financial data into typed JSON. Features advanced prompt engineering with strict output guardrails for consistent Income Statements and Balance Sheets."
+                subtitle="04 // @Someidea AI"
+                description="Design and built the backend pipeline for a multi-agent financial analyst AI using LangChain and Llama 3.2 to extract and summarize complex financial reports into consistent Income Statements and Balance Sheets."
                 img="/projects/ABC.png" 
                 align="left"
                 href="https://github.com/lanbodikai/SIAI-financial-agent-test"
