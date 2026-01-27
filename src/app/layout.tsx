@@ -24,7 +24,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  title: "Kai Zhao – ROG Portfolio",
+  title: "Kai's Website",
   description: "Engineer ⇄ PM — CV, interfaces, and product sense.",
 };
 
