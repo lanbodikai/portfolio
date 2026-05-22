@@ -18,57 +18,49 @@ const BadgeIcon = ({ icon }: { icon: string }) => (
 
 export default function Page() {
   return (
-    <main className="min-h-screen selection:bg-accent selection:text-accent-contrast overflow-x-hidden">
+    <main className="relative min-h-screen overflow-x-hidden bg-[var(--bg)] selection:bg-accent selection:text-accent-contrast">
       <IntroOverlay />
       
       {/* 1. HERO - Zoom Animation */}
-      <div className="relative">
+      <div className="relative z-10">
         <Reveal type="zoom" duration={1.5}>
           <HeroG16 />
         </Reveal>
       </div>
 
       {/* 2. ABOUT SECTION - Slide & Blur Animations */}
-      <section id="about" className="relative py-24 md:py-32 tech-bg about-dark overflow-hidden">
-        {/* Colorful Background Glows */}
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(206,86,120,0.18),transparent_55%),radial-gradient(circle_at_85%_12%,rgba(92,140,196,0.22),transparent_50%)]" />
-        <div className="absolute top-0 right-0 h-1/2 w-1/2 bg-rogRed/12 blur-[160px] pointer-events-none" />
-        <div className="absolute bottom-10 left-0 h-1/3 w-1/2 bg-rogCyan/12 blur-[170px] pointer-events-none" />
-        <div className="absolute top-1/3 left-1/3 h-40 w-40 rounded-full bg-rogCyan/16 blur-[120px] pointer-events-none" />
-        
-        <div className="mx-auto max-w-7xl px-6 md:px-12 pl-[86px] md:pl-[158px]">
-          <div className="flex flex-col items-center justify-center">
+      <section id="about" className="relative z-10 overflow-hidden border-y border-[var(--border)] bg-[rgba(255,255,255,0.74)] py-20 backdrop-blur-sm md:py-28 about-dark">
+        <div className="mx-auto max-w-6xl px-6 md:px-12">
+          <div className="flex flex-col items-start justify-center md:items-center">
             <Reveal type="blur" delay={0.2} className="w-full max-w-3xl">
               <div className="space-y-6 text-left">
                 <div>
-                  <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-[var(--fg)] font-serifDisplay">
+                  <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-[var(--fg)] font-body">
                     About
                   </h2>
-                  <div className="mt-3 h-1 w-16 bg-rogRed" />
+                  <div className="mt-3 h-[2px] w-16 bg-rogCyan" />
                 </div>
                 <p className="text-[var(--fg-muted)] leading-relaxed text-lg">
-                  Hi!!! I'm Kai- a full-stack AI + web developer in the Bay Area. I'm studying IEOR at{" "}
+                  Hey guys! I'm Kai, an AI and full-stack software developer in the Bay Area studying IEOR at{" "}
                   <span className={nameBadgeBase}>
                     <BadgeIcon icon="fa-solid fa-building-columns" />
                     <span>UC Berkeley</span>
-                  </span>{" "}
-                  with a Data Science minor.
+                  </span>{"."}
                 </p>
                 <p className="text-[var(--fg-muted)] leading-relaxed text-lg">
                   I'm currently building{" "}
                   <span className={nameBadgeBase}>
-                    <BadgeIcon icon="fa-solid fa-computer-mouse" />
+                    <BadgeIcon icon="fa-solid fa-gamepad" />
                     <span>MouseFit</span>
                   </span>
-                  , a web product that helps gamers find BEST-Fitting peripherals by turning hand size + grip style into Ai-Prompted recommendations.
+                  {", "}a web product that helps gamers find better-fitting peripherals using hand-size, grip-style, and preference-based AI recommendations.
                 </p>
                 <p className="text-[var(--fg-muted)] leading-relaxed text-lg">
-                  I mostly build in{" "}
+                  I'm interested in AI systems, agents, retrieval, evaluation, and building reliable software around LLMs: turning models into useful products, not just prompting them.
+                </p>
+                <p className="text-[var(--fg-muted)] leading-relaxed text-lg">
+                  I build with{" "}
                   <span className="inline-flex flex-wrap gap-2 align-middle">
-                    <span className={badgeBase}>
-                      <BadgeIcon icon="fa-brands fa-js" />
-                      <span>JavaScript</span>
-                    </span>
                     <span className={badgeBase}>
                       <BadgeIcon icon="fa-solid fa-code" />
                       <span>TypeScript</span>
@@ -78,28 +70,21 @@ export default function Page() {
                       <span>Python</span>
                     </span>
                     <span className={badgeBase}>
+                      <BadgeIcon icon="fa-brands fa-js" />
+                      <span>JavaScript</span>
+                    </span>
+                    <span className={badgeBase}>
                       <BadgeIcon icon="fa-brands fa-java" />
                       <span>Java</span>
                     </span>
-                  </span>. I also use a bit of{" "}
-                  <span className="inline-flex flex-wrap gap-2 align-middle">
                     <span className={badgeBase}>
                       <BadgeIcon icon="fa-solid fa-code" />
-                      <span>C</span>
+                      <span>C++</span>
                     </span>
-                    <span className={badgeBase}>
-                      <BadgeIcon icon="fa-solid fa-database" />
-                      <span>SQL</span>
-                    </span>
-                    <span className={badgeBase}>
-                      <BadgeIcon icon="fa-solid fa-calculator" />
-                      <span>MATLAB</span>
-                    </span>
-                  </span>{" "}
-                  <span className="italic">(since I'm an IEOR major - can't complain)</span>.
+                  </span>{"."}
                 </p>
                 <p className="text-[var(--fg-muted)] leading-relaxed text-lg">
-                  Tool-wise, I use{" "}
+                  Product-wise, I use{" "}
                   <span className="inline-flex flex-wrap gap-2 align-middle">
                     <span className={badgeBase}>
                       <BadgeIcon icon="fa-brands fa-react" />
@@ -113,10 +98,44 @@ export default function Page() {
                       <BadgeIcon icon="fa-solid fa-database" />
                       <span>PostgreSQL/SQLite</span>
                     </span>
-                  </span>.
+                    <span className={badgeBase}>
+                      <BadgeIcon icon="fa-solid fa-wind" />
+                      <span>Tailwind CSS</span>
+                    </span>
+                    <span className={badgeBase}>
+                      <BadgeIcon icon="fa-brands fa-github" />
+                      <span>Git/GitHub</span>
+                    </span>
+                    <span className={badgeBase}>
+                      <BadgeIcon icon="fa-solid fa-cloud" />
+                      <span>Vercel</span>
+                    </span>
+                  </span>{"."}
                 </p>
                 <p className="text-[var(--fg-muted)] leading-relaxed text-lg">
-                  I'm enjoy robotics, 3D modeling, and gaming. Especially interested in building products that blend engineering + design into something people can actually feel and use.
+                  AI-wise, I'm working with{" "}
+                  <span className="inline-flex flex-wrap gap-2 align-middle">
+                    <span className={badgeBase}>
+                      <BadgeIcon icon="fa-solid fa-brain" />
+                      <span>LLM APIs</span>
+                    </span>
+                    <span className={badgeBase}>
+                      <BadgeIcon icon="fa-solid fa-magnifying-glass-chart" />
+                      <span>RAG</span>
+                    </span>
+                    <span className={badgeBase}>
+                      <BadgeIcon icon="fa-solid fa-vector-square" />
+                      <span>Embeddings</span>
+                    </span>
+                    <span className={badgeBase}>
+                      <BadgeIcon icon="fa-solid fa-database" />
+                      <span>Vector search</span>
+                    </span>
+                    <span className={badgeBase}>
+                      <BadgeIcon icon="fa-solid fa-diagram-project" />
+                      <span>Agent workflows</span>
+                    </span>
+                  </span>{"."}
                 </p>
                 <p className="text-[var(--fg-muted)] leading-relaxed text-lg">
                   Hit me up on{" "}
@@ -124,9 +143,9 @@ export default function Page() {
                     href="https://www.linkedin.com/in/kai-zhao-85b9832a1/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-semibold text-[var(--fg)] underline decoration-rogRed/60 underline-offset-4 hover:text-rogRed transition-colors"
+                    className="inline-flex items-center gap-2 font-semibold text-[var(--fg)] underline decoration-rogCyan/60 underline-offset-4 hover:text-rogCyan transition-colors"
                   >
-                    <i className="fa-brands fa-linkedin-in text-rogRed text-xs" aria-hidden="true" />
+                    <i className="fa-brands fa-linkedin-in text-rogCyan text-xs" aria-hidden="true" />
                     LinkedIn
                   </a>
                   .
@@ -138,29 +157,27 @@ export default function Page() {
       </section>
       
       {/* 3. SELECTED MISSIONS */}
-      <section id="projects" className="py-24 bg-[var(--bg)] tech-bg relative border-t border-[var(--border)] overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-rogCyan/10 via-transparent to-rogRed/10" />
-        <div className="pointer-events-none absolute -top-16 right-10 h-72 w-72 rounded-full bg-rogCyan/15 blur-[120px]" />
-        <div className="pointer-events-none absolute -bottom-20 left-8 h-72 w-72 rounded-full bg-rogRed/15 blur-[120px]" />
+      <section id="projects" className="relative z-10 overflow-hidden bg-[rgba(255,255,255,0.82)] py-20 backdrop-blur-sm md:py-24">
         <div className="mx-auto max-w-7xl px-6 md:px-12 relative z-10">
           <Reveal type="zoom" className="text-center mb-8">
-            <h2 className="font-tech text-4xl md:text-6xl font-bold mb-2 uppercase">
+            <h2 className="font-body text-4xl md:text-6xl font-bold mb-2 tracking-tight">
               My Projects
             </h2>
-            <div className="w-24 h-1 bg-rogRed mx-auto" />
+            <div className="mx-auto h-[2px] w-24 bg-rogCyan" />
           </Reveal>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2 md:gap-4">
             
             {/* Project 1: Mouse-Fit (Image Right) */}
             <Reveal type="right" threshold={0.3}>
               <CornerCard
                 title="Mouse-Fit"
-                subtitle="01 // Fullstack Web Application"
-                description="A browser-based ergonomic analysis tool. It uses computer vision to compute a real-time measurement of your hand, calibrates physical size using a standard credit card, and matches you with the perfect gaming mouse."
+                subtitle="01 // Fullstack AI Product"
+                description="A browser-based ergonomic analysis tool. Uses simple Q&A assisted with RAG/Computer Vision to analyze a real-time measurement of your hand, and matches you with the perfect gaming mouse."
                 img="/projects/mousefit-hero.jpg"
                 align="right"
                 href="https://mousefit.pro"
+                tech={["RAG", "Computer Vision", "Product"]}
               />
             </Reveal>
 
@@ -172,9 +189,10 @@ export default function Page() {
                 title="VentureSignal"
                 subtitle="02 // Chrome Extension"
                 description="The intelligent VC assistant. An AI-powered Chrome extension acting as a 'second brain' for investors. It parses startup websites, passively monitors for traction signals, and auto-drafts re-engagement emails."
-                img="/projects/venturesignal.jpg" // Ensure you add an image with this name
+                img="/projects/venturesignal.jpg"
                 align="left"
                 href="https://github.com/lanbodikai/ReengageAI"
+                tech={["Chrome Extension", "LLM Workflow", "Parsing"]}
               />
             </Reveal>
 
@@ -185,10 +203,11 @@ export default function Page() {
               <CornerCard 
                 title="ScratchGPT"
                 subtitle="03 // @Polylabs Inc"
-                description="Help debugged and developed a curriculum plan based on a creative agent that translates plain English instructions into fully functional, block-based Scratch code. Targeting K-12 students for educational purpose."
+                description="Debug and develop a curriculum plan around a creative agent that translates natural language instructions into functional, block-based Scratch code for K-12 students."
                 img="/projects/scratchgpt-hero.png"
                 align="right"
                 href="https://stax.fun/editor"
+                tech={["Education", "Scratch", "Curriculum"]}
               />
             </Reveal>
             
@@ -200,40 +219,40 @@ export default function Page() {
               <CornerCard 
                 title="Financial AI Agent"
                 subtitle="04 // @Someidea AI"
-                description="Design and built the backend pipeline for a multi-agent financial analyst AI using LangChain and Llama 3.2 to extract and summarize complex financial reports into consistent Income Statements and Balance Sheets."
+                description="Designed and built the backend pipeline for a multi-agent financial analyst AI using LangChain. Use LLM to extract and summarize complex financial reports into consistent income statements and balance sheets."
                 img="/projects/ABC.png" 
                 align="left"
                 href="https://github.com/lanbodikai/SIAI-financial-agent-test"
+                tech={["LangChain", "AI Agent", "Financial Reports"]}
               />
             </Reveal>
 
           </div>
 
-          <Reveal type="up" className="mt-24 flex justify-center">
-            <button className="inline-flex items-center px-8 py-3 border border-border text-rogRed font-tech uppercase tracking-[0.25em] text-xs hover:bg-rogRed hover:text-accent-contrast dark:border-rogRed dark:hover:bg-[var(--border)] dark:hover:text-[var(--fg)] transition-colors duration-300">
-              Checkout more projects
-            </button>
+          <Reveal type="up" className="mt-16 flex justify-center md:mt-20">
+            <a
+              href="https://github.com/lanbodikai?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center border border-border bg-white/70 px-8 py-3 font-mono text-xs uppercase tracking-[0.18em] text-[var(--fg)] transition-colors duration-300 hover:border-rogCyan hover:bg-rogCyan hover:text-white"
+            >
+              Check out more projects
+            </a>
           </Reveal>
         </div>
       </section>
 
       {/* 5. FOOTER / CONTACT */}
-      <footer className="relative z-50 bg-[var(--card)] pt-20 border-t border-[var(--border)] overflow-hidden">
-        <div className="absolute inset-0 tech-bg opacity-20 pointer-events-none" />
-        
+      <footer className="relative z-10 overflow-hidden border-t border-[var(--border)] bg-[rgba(255,255,255,0.86)] pt-20 backdrop-blur-sm">
         <div className="mx-auto max-w-7xl px-6 md:px-12 relative z-10 pb-10">
            <Reveal type="blur" duration={1.2}>
              <ContactCTA />
            </Reveal>
            
            <div className="flex flex-col md:flex-row justify-between items-center border-t border-[var(--border)] pt-8 mt-10 text-[var(--fg-muted)] text-sm font-mono">
-             <p>© 2025 KAI ZHAO. SYSTEM ONLINE.</p>
+             <p>© 2025 Kai Zhao.</p>
              <div className="flex items-center gap-2 text-[var(--fg)]">
-                <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--fg)] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-[var(--fg)]"></span>
-                </span>
-                OPEN FOR OPPORTUNITIES
+                Open for opportunities
              </div>
            </div>
         </div>

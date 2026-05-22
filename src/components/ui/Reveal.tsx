@@ -1,5 +1,5 @@
 "use client";
-import { motion, useInView, Variants } from "framer-motion";
+import { motion, useInView, useReducedMotion, Variants } from "framer-motion";
 import { useRef } from "react";
 
 type AnimationType = "up" | "down" | "left" | "right" | "zoom" | "blur";
@@ -22,40 +22,47 @@ export default function Reveal({
   threshold = 0.2
 }: RevealProps) {
   const ref = useRef(null);
-  // once: false ensures it animates EVERY time it enters/leaves viewport
-  const isInView = useInView(ref, { once: false, amount: threshold });
+  const shouldReduceMotion = useReducedMotion();
+  const isInView = useInView(ref, { once: true, amount: threshold });
 
   const getVariants = (type: AnimationType): Variants => {
+    if (shouldReduceMotion) {
+      return {
+        hidden: { opacity: 1 },
+        visible: { opacity: 1 },
+      };
+    }
+
     switch (type) {
       case "zoom":
         return {
-          hidden: { opacity: 0, scale: 1.1 },
+          hidden: { opacity: 0, scale: 0.98 },
           visible: { opacity: 1, scale: 1 }
         };
       case "blur":
         return {
-          hidden: { opacity: 0, filter: "blur(10px)", scale: 0.95 },
-          visible: { opacity: 1, filter: "blur(0px)", scale: 1 }
+          hidden: { opacity: 0, y: 24 },
+          visible: { opacity: 1, y: 0 }
         };
       case "left":
         return {
-          hidden: { opacity: 0, x: -50 },
+          hidden: { opacity: 0, x: -28 },
           visible: { opacity: 1, x: 0 }
         };
       case "right":
         return {
-          hidden: { opacity: 0, x: 50 },
+          hidden: { opacity: 0, x: 28 },
           visible: { opacity: 1, x: 0 }
         };
       case "down":
         return {
-          hidden: { opacity: 0, y: -50 },
+          hidden: { opacity: 0, y: -28 },
           visible: { opacity: 1, y: 0 }
         };
       case "up":
       default:
         return {
-          hidden: { opacity: 0, y: 50 },
+          hidden: { opacity: 0, y: 28 },
           visible: { opacity: 1, y: 0 }
         };
     }
@@ -67,7 +74,7 @@ export default function Reveal({
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={getVariants(type)}
-      transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }} // Custom cubic-bezier for smooth feel
+      transition={{ duration: Math.min(duration, 0.65), delay, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}

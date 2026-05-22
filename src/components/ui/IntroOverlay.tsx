@@ -29,22 +29,21 @@ export default function IntroOverlay() {
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-bg text-fg"
         >
           <div className="w-full max-w-md px-6 text-left">
-            <h1 
-              className="glitch-text mb-6 text-4xl font-black uppercase tracking-[0.2em] md:text-6xl font-tech" 
-              data-text="LOADING"
+            <h1
+              className="mb-6 text-4xl font-bold tracking-tight md:text-6xl"
             >
-              LOADING
+              Loading
             </h1>
             
             <div className="mx-auto h-1 w-full overflow-hidden bg-card-2">
               <motion.div 
-                className="h-full bg-rogRed shadow-[0_0_15px_rgb(var(--accent)/0.7)]"
+                className="h-full bg-rogCyan"
                 initial={{ width: "0%" }}
                 animate={{ width: `${progress}%` }}
               />
             </div>
             
-            <div className="mt-2 flex justify-between font-mono text-xs text-rogRed">
+            <div className="mt-2 flex justify-between font-mono text-xs text-rogCyan">
               <span>Starting...</span>
               <span>{Math.min(progress, 100)}%</span>
             </div>

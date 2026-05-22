@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
-// Keep config minimal for cross‑env builds (Vercel & local)
-const nextConfig: NextConfig = {};
+const nextConfig: NextConfig = {
+  turbopack: {
+    root: process.cwd(),
+  },
+};
 
 export default nextConfig;

@@ -10,7 +10,7 @@ export default function TechSeparator() {
         whileInView={{ width: "30%", opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
         viewport={{ once: true, margin: "-100px" }}
-        className="h-[1px] bg-gradient-to-r from-transparent via-rogRed to-rogRed"
+        className="h-[1px] bg-gradient-to-r from-transparent via-rogCyan to-transparent"
       />
 
       {/* Right Line */}
@@ -19,7 +19,7 @@ export default function TechSeparator() {
         whileInView={{ width: "30%", opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
         viewport={{ once: true, margin: "-100px" }}
-        className="h-[1px] bg-gradient-to-l from-transparent via-rogRed to-rogRed"
+        className="h-[1px] bg-gradient-to-l from-transparent via-rogCyan to-transparent"
       />
     </div>
   );

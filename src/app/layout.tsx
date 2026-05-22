@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${orbitron.variable} ${roboto.variable} ${playfair.variable} dark`}
+      className={`${orbitron.variable} ${roboto.variable} ${playfair.variable}`}
       suppressHydrationWarning
     >
       {/* Load FontAwesome just like the reference HTML */}
