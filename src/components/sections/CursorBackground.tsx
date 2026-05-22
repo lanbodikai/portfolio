@@ -47,7 +47,7 @@ export default function CursorBackground() {
         color: new THREE.Color("#7aa7ff"),
         size: 0.035,
         transparent: true,
-        opacity: 0.34,
+        opacity: 0.38,
         sizeAttenuation: true,
       });
 
@@ -57,7 +57,7 @@ export default function CursorBackground() {
       const lineMaterial = new THREE.LineBasicMaterial({
         color: new THREE.Color("#8eb6ff"),
         transparent: true,
-        opacity: 0.13,
+        opacity: 0.2,
       });
       const lineGeometry = new THREE.BufferGeometry();
       const linePositions = new Float32Array((count - 1) * 2 * 3);
@@ -160,7 +160,7 @@ export default function CursorBackground() {
     <div
       ref={mountRef}
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 z-0 opacity-80"
+      className="pointer-events-none absolute inset-0 z-0 opacity-90"
     />
   );
 }

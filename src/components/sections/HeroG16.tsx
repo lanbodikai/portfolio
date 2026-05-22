@@ -1,9 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import CursorBackground from "@/components/sections/CursorBackground";
 
 export default function HeroG16() {
-  const focusAreas = ["AI Systems", "Full-stack Web", "Product Design"];
+  const focusAreas = ["AI Systems", "Full-stack", "Product"];
 
   return (
     <section id="hero" className="relative min-h-[86svh] w-full overflow-hidden bg-transparent md:min-h-[88vh]">
@@ -14,13 +15,20 @@ export default function HeroG16() {
         className="relative z-10 flex min-h-[86svh] flex-col items-center justify-center px-6 pb-16 pt-20 text-center md:min-h-[88vh]"
       >
         <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
+          initial={{ y: 18, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="mb-6"
         >
-          <div className="h-36 w-36 overflow-hidden rounded-full border border-border bg-card shadow-[0_24px_80px_rgba(41,112,232,0.12)] md:h-40 md:w-40">
-            <img src="/about/headshot.jpg" alt="Kai Zhao" className="h-full w-full object-cover" />
+          <div className="relative h-36 w-36 overflow-hidden rounded-full border border-[rgba(41,112,232,0.24)] bg-card ring-1 ring-[rgba(41,112,232,0.32)] shadow-[0_24px_80px_rgba(41,112,232,0.12)] md:h-40 md:w-40">
+            <Image
+              src="/about/headshot.jpg"
+              alt="Kai Zhao"
+              fill
+              priority
+              sizes="(min-width: 768px) 160px, 144px"
+              className="object-cover"
+            />
           </div>
         </motion.div>
 
