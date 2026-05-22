@@ -22,7 +22,7 @@ export default function HeroG16() {
         >
           <div className="relative h-36 w-36 overflow-hidden rounded-full border border-[rgba(41,112,232,0.24)] bg-card ring-1 ring-[rgba(41,112,232,0.32)] shadow-[0_24px_80px_rgba(41,112,232,0.12)] md:h-40 md:w-40">
             <Image
-              src="/about/headshot.jpg"
+              src="/about/headshot.png"
               alt="Kai Zhao"
               fill
               priority
