@@ -8,36 +8,44 @@ interface CornerCardProps {
   description: string;
   img: string;
   href?: string;
+  ctaLabel?: string;
   align?: "left" | "right";
   tech?: string[];
 }
 
-export default function CornerCard({ title, subtitle, description, img, href = "#", align = "left", tech = [] }: CornerCardProps) {
+export default function CornerCard({ title, subtitle, description, img, href, ctaLabel = "View Project", align = "left", tech = [] }: CornerCardProps) {
+  const image = (
+    <motion.div
+      className="relative origin-center will-change-transform"
+      whileHover={{ scale: 1.025 }}
+      transition={{ type: "spring", stiffness: 260, damping: 18, mass: 0.9 }}
+    >
+      <div className="absolute left-0 top-0 z-20 h-4 w-4 border-l border-t border-border transition-all duration-300 group-hover:h-full group-hover:w-full group-hover:border-rogCyan" />
+      <div className="absolute right-0 top-0 z-20 h-4 w-4 border-r border-t border-border transition-all duration-300 group-hover:h-full group-hover:w-full group-hover:border-rogCyan" />
+      <div className="absolute bottom-0 left-0 z-20 h-4 w-4 border-b border-l border-border transition-all duration-300 group-hover:h-full group-hover:w-full group-hover:border-rogCyan" />
+      <div className="absolute bottom-0 right-0 z-20 h-4 w-4 border-b border-r border-border transition-all duration-300 group-hover:h-full group-hover:w-full group-hover:border-rogCyan" />
+
+      <div className="relative aspect-video w-full overflow-hidden border border-[var(--border)] bg-card-2 shadow-[0_18px_70px_rgba(41,112,232,0.08)]">
+        {img.endsWith(".mp4") ? (
+          <video src={img} autoPlay muted loop playsInline className="h-full w-full object-cover" />
+        ) : (
+          <img src={img} alt={title} className="h-full w-full object-cover" />
+        )}
+      </div>
+    </motion.div>
+  );
+
   return (
     <div className={`flex flex-col gap-7 py-10 md:gap-12 md:py-12 md:items-center ${align === "right" ? "md:flex-row-reverse" : "md:flex-row"}`}>
       
       {/* Image Card with Corners */}
-      <Link href={href} className="group relative w-full cursor-pointer md:w-[58%]">
-        <motion.div
-          className="relative origin-center will-change-transform"
-          whileHover={{ scale: 1.025 }}
-          transition={{ type: "spring", stiffness: 260, damping: 18, mass: 0.9 }}
-        >
-          {/* Animated Corners */}
-          <div className="absolute left-0 top-0 z-20 h-4 w-4 border-l border-t border-border transition-all duration-300 group-hover:h-full group-hover:w-full group-hover:border-rogCyan" />
-          <div className="absolute right-0 top-0 z-20 h-4 w-4 border-r border-t border-border transition-all duration-300 group-hover:h-full group-hover:w-full group-hover:border-rogCyan" />
-          <div className="absolute bottom-0 left-0 z-20 h-4 w-4 border-b border-l border-border transition-all duration-300 group-hover:h-full group-hover:w-full group-hover:border-rogCyan" />
-          <div className="absolute bottom-0 right-0 z-20 h-4 w-4 border-b border-r border-border transition-all duration-300 group-hover:h-full group-hover:w-full group-hover:border-rogCyan" />
-
-          <div className="relative aspect-video w-full overflow-hidden border border-[var(--border)] bg-card-2 shadow-[0_18px_70px_rgba(41,112,232,0.08)]">
-            {img.endsWith(".mp4") ? (
-              <video src={img} autoPlay muted loop className="h-full w-full object-cover" />
-            ) : (
-              <img src={img} alt={title} className="h-full w-full object-cover" />
-            )}
-          </div>
-        </motion.div>
-      </Link>
+      {href ? (
+        <Link href={href} className="group relative w-full cursor-pointer md:w-[58%]" target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener noreferrer" : undefined}>
+          {image}
+        </Link>
+      ) : (
+        <div className="group relative w-full md:w-[58%]">{image}</div>
+      )}
 
       {/* Text Content */}
       <div className={`w-full md:w-[42%] ${align === "right" ? "text-left md:text-right" : "text-left"}`}>
@@ -58,9 +66,15 @@ export default function CornerCard({ title, subtitle, description, img, href = "
           </div>
         )}
 
-        <Link href={href} className="inline-flex items-center gap-2 font-mono text-sm font-bold uppercase tracking-[0.12em] text-rogCyan hover:text-fg">
-          View Project <span>→</span>
-        </Link>
+        {href ? (
+          <Link href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener noreferrer" : undefined} className="inline-flex items-center gap-2 font-mono text-sm font-bold uppercase tracking-[0.12em] text-rogCyan hover:text-fg">
+            {ctaLabel} <span>→</span>
+          </Link>
+        ) : (
+          <span className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-[0.12em] text-rogCyan">
+            Featured build <span aria-hidden="true">◆</span>
+          </span>
+        )}
       </div>
     </div>
   );

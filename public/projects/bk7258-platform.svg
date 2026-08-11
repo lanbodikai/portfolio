@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">BK7258 Voice Device Platform</title>
+  <desc id="desc">A device chip connected to a cloud voice processing pipeline.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#06152d"/><stop offset="1" stop-color="#123b72"/></linearGradient>
+    <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2f7cff"/><stop offset="1" stop-color="#76b4ff"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#6ba3e8" stroke-opacity=".12"/></pattern>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/><rect width="1280" height="720" fill="url(#grid)"/>
+  <g opacity=".7" stroke="#5ca3ff" fill="none"><path d="M0 548H190l44-72 48 122 62-184 57 134h113"/><path d="M766 548h70l36-50 36 94 50-154 53 110h269"/></g>
+  <g transform="translate(128 158)">
+    <rect x="0" y="0" width="360" height="360" rx="30" fill="#081e3c" stroke="#6ab0ff" stroke-width="3"/>
+    <rect x="62" y="62" width="236" height="236" rx="20" fill="url(#chip)" filter="url(#glow)"/>
+    <g stroke="#80bbff" stroke-width="8"><path d="M38 72H0M38 126H0M38 180H0M38 234H0M38 288H0M360 72h38M360 126h38M360 180h38M360 234h38M360 288h38M72 38V0M126 38V0M180 38V0M234 38V0M288 38V0M72 360v38M126 360v38M180 360v38M234 360v38M288 360v38"/></g>
+    <text x="180" y="172" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="38" font-weight="700">BK7258</text>
+    <text x="180" y="218" text-anchor="middle" fill="#d7e9ff" font-family="monospace" font-size="18">VOICE DEVICE</text>
+  </g>
+  <g font-family="Arial, sans-serif">
+    <text x="570" y="152" fill="#8fc2ff" font-family="monospace" font-size="18" letter-spacing="3">REAL-TIME AUDIO PIPELINE</text>
+    <g transform="translate(570 190)">
+      <g><rect width="158" height="88" rx="12" fill="#102f59" stroke="#4d91e5"/><text x="79" y="39" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">STT</text><text x="79" y="64" text-anchor="middle" fill="#91c3ff" font-size="13">speech to text</text></g>
+      <path d="M158 44h52" stroke="#70b2ff" stroke-width="3"/><path d="m201 36 12 8-12 8" fill="none" stroke="#70b2ff" stroke-width="3"/>
+      <g transform="translate(214)"><rect width="158" height="88" rx="12" fill="#102f59" stroke="#4d91e5"/><text x="79" y="39" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">LLM</text><text x="79" y="64" text-anchor="middle" fill="#91c3ff" font-size="13">reasoning</text></g>
+      <path d="M372 44h52" stroke="#70b2ff" stroke-width="3"/><path d="m415 36 12 8-12 8" fill="none" stroke="#70b2ff" stroke-width="3"/>
+      <g transform="translate(428)"><rect width="158" height="88" rx="12" fill="#102f59" stroke="#4d91e5"/><text x="79" y="39" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">TTS</text><text x="79" y="64" text-anchor="middle" fill="#91c3ff" font-size="13">voice playback</text></g>
+    </g>
+    <g transform="translate(570 350)"><rect width="586" height="168" rx="18" fill="#0a2448" stroke="#3f7fcf"/><text x="32" y="42" fill="#82baff" font-family="monospace" font-size="16">DEVICE TOOLING</text><text x="32" y="83" fill="#fff" font-size="25" font-weight="700">Build • Configure • Validate • Flash</text><text x="32" y="123" fill="#a8cbf5" font-size="17">C firmware  /  Node.js CLI  /  GitHub Actions</text></g>
+  </g>
+  <text x="80" y="652" fill="#fff" font-family="Arial, sans-serif" font-size="42" font-weight="700">BK7258 VOICE DEVICE PLATFORM</text>
+  <text x="1200" y="652" text-anchor="end" fill="#73b2ff" font-family="monospace" font-size="19">50% LOWER STT LATENCY</text>
+</svg>
