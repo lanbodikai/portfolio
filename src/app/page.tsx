@@ -163,7 +163,7 @@ export default function Page() {
                 title="MouseFit Studio"
                 subtitle="01 // Fullstack AI Product"
                 description="A full-stack gaming-mouse recommendation platform that ranks a 434-model catalog by hand size, grip style, shape, weight, and connectivity, with camera-guided MediaPipe measurements and RAG-powered explanations."
-                img="/projects/mousefit-hero.jpg"
+                img="/projects/mousefit-simulator.png"
                 align="right"
                 href="https://mousefit.pro"
                 tech={["TypeScript", "Next.js", "FastAPI", "PostgreSQL", "MediaPipe", "RAG"]}
